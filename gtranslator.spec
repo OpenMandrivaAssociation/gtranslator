@@ -3,7 +3,7 @@
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
 Version:	%{version}
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Group:		Editors
 URL:		http://sourceforge.net/projects/gtranslator/
@@ -16,11 +16,10 @@ BuildRequires:	libgnomeui2-devel
 BuildRequires:	scrollkeeper
 BuildRequires:	perl-XML-Parser
 BuildRequires:	gtkspell-devel
-Prereq:		scrollkeeper
 Requires:	gettext
 
-Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
+Requires(post): desktop-file-utils scrollkeeper
+Requires(postun): desktop-file-utils scrollkeeper
 
 %description
 gtranslator is a comfortable po file editor with many bells and whistles.
