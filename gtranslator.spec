@@ -4,7 +4,7 @@ Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
 Version:	%{version}
 Release:	%mkrel 2
-License:	GPL
+License:	GPLv2+
 Group:		Editors
 URL:		http://sourceforge.net/projects/gtranslator/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
@@ -49,18 +49,6 @@ convert -geometry 32x32 data/desktop/gtranslator.png $RPM_BUILD_ROOT/%{_iconsdir
 convert -geometry 16x16 data/desktop/gtranslator.png $RPM_BUILD_ROOT/%{_miconsdir}/%{name}.png
 
 # menu entry
-install -d $RPM_BUILD_ROOT/%{_menudir}
-cat > $RPM_BUILD_ROOT/%{_menudir}/%{name} <<_EOF_
-?package(%{name}): \
- needs="x11" \
- section="Applications/Editors" \
- title="Gtranslator" \
- icon="%{name}.png" \
- command="%{_bindir}/%{name}" \
- longtitle="Gettext translation file editor" \
- xdg="true"
-_EOF_
-
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
@@ -70,7 +58,7 @@ Exec=%{_bindir}/%{name}
 Icon=%{name}
 Terminal=false
 Type=Application
-Categories=X-MandrivaLinux-MoreApplications-Editors;
+Categories=Translation;Development;GTK;
 EOF
 
 ### Remove files not bundled
@@ -102,9 +90,6 @@ rm -fr $RPM_BUILD_ROOT
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/*
 %{_datadir}/mime-info/gtranslator.*
-%{_menudir}/%{name}
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
-
-
