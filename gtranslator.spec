@@ -9,7 +9,7 @@ Group:		Editors
 URL:		http://sourceforge.net/projects/gtranslator/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtranslator/%{name}-%{version}.tar.bz2
-
+Patch0:		gtranslator-1.1.7-scrollkeeper-rarian.patch
 BuildRequires:	ImageMagick
 BuildRequires:	docbook-utils
 BuildRequires:	libgnomeui2-devel
@@ -29,6 +29,7 @@ files immenantly.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure2_5x \
@@ -81,7 +82,7 @@ rm -fr $RPM_BUILD_ROOT
 
 %files -f %name.lang
 %defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog DEPENDS INSTALL NEWS README THANKS TODO
+%doc AUTHORS COPYING ChangeLog DEPENDS NEWS README THANKS TODO
 %{_bindir}/gtranslator
 %{_datadir}/gtranslator
 %dir %{_datadir}/omf/%name
