@@ -72,13 +72,17 @@ rm -f $RPM_BUILD_ROOT%{_mandir}/man1/pozilla*
 %clean
 rm -fr $RPM_BUILD_ROOT
 
+%if %mdkversion < 200900
 %post 
 %update_scrollkeeper
 %{update_menus}
+%endif
 
+%if %mdkversion < 200900
 %postun 
 %update_scrollkeeper
 %{clean_menus}
+%endif
 
 %files -f %name.lang
 %defattr(-, root, root)
