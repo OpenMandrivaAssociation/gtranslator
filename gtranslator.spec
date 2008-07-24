@@ -3,7 +3,7 @@
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
 Version:	%{version}
-Release:	%mkrel 2
+Release:	%mkrel 4
 License:	GPLv2+
 Group:		Editors
 URL:		http://sourceforge.net/projects/gtranslator/
