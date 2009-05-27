@@ -3,7 +3,7 @@
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
 Version:	%{version}
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Editors
 URL:		http://sourceforge.net/projects/gtranslator/
@@ -11,15 +11,16 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtranslator/%{name}-%{version}.tar.bz2
 Patch0:		gtranslator-1.9.5-fix-str-fmt.patch
 Patch1:		gtranslator-1.9.5-no-update-desktop.patch
+# http://bugzilla.gnome.org/show_bug.cgi?id=583961
+Patch2:		gtranslator-1.9.5-gdl-header.patch
 BuildRequires:	imagemagick
 BuildRequires:	gnome-doc-utils
 BuildRequires:	intltool
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	scrollkeeper
-BuildRequires:	perl-XML-Parser
 BuildRequires:	gtkspell-devel
 BuildRequires:	libgtksourceview-2.0-devel
-BuildRequires:	libgdl-devel
+BuildRequires:	libgdl-devel >= 2.27.2-2mdv
 BuildRequires:	subversion-devel
 BuildRequires:	libsoup-2.4-devel
 BuildRequires:	libgdict1.0-devel
@@ -46,6 +47,7 @@ This package contains development files needed to build %name plugins.
 %setup -q
 %patch0 -p1 -b .str
 %patch1 -p0
+%patch2 -p1
 
 %build
 %configure2_5x \
