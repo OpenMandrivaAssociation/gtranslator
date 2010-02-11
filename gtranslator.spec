@@ -1,4 +1,4 @@
-%define version 1.9.7
+%define version 1.9.8
 
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
@@ -54,12 +54,6 @@ This package contains development files needed to build %name plugins.
 rm -fr $RPM_BUILD_ROOT
 %makeinstall_std UPDATE_DESKTOP=true
 
-# icons
-mkdir -p $RPM_BUILD_ROOT/%{_miconsdir} \
-	 $RPM_BUILD_ROOT/%{_iconsdir}
-install -m 0644 -D      data/desktop/gtranslator.png $RPM_BUILD_ROOT/%{_liconsdir}/%{name}.png
-convert -geometry 32x32 data/desktop/gtranslator.png $RPM_BUILD_ROOT/%{_iconsdir}/%{name}.png
-convert -geometry 16x16 data/desktop/gtranslator.png $RPM_BUILD_ROOT/%{_miconsdir}/%{name}.png
 
 rm -f %buildroot%_libdir/gtranslator/*.la
 
@@ -91,11 +85,9 @@ rm -fr $RPM_BUILD_ROOT
 %{_datadir}/gtranslator
 %{_libdir}/gtranslator
 %{_datadir}/omf/%name
-%{_miconsdir}/%{name}.png
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}.png
 %{_mandir}/man?/*
 %{_datadir}/applications/*.desktop
+%_datadir/icons/hicolor/*/apps/gtranslator.*
 %{_datadir}/pixmaps/*
 %{_datadir}/gtk-doc/html/gtranslator
 
