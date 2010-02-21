@@ -15,6 +15,7 @@ BuildRequires:	intltool
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	scrollkeeper
 BuildRequires:	gtkspell-devel
+BuildRequires:	unique-devel
 BuildRequires:	libgtksourceview-2.0-devel
 BuildRequires:	libgdl-devel >= 2.27.2-2mdv
 BuildRequires:	subversion-devel
