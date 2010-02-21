@@ -1,4 +1,4 @@
-%define version 1.9.8
+%define version 1.9.9
 
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
