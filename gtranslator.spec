@@ -1,4 +1,4 @@
-%define version 1.9.9
+%define version 1.9.10
 
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
@@ -80,7 +80,7 @@ rm -fr $RPM_BUILD_ROOT
 
 %files -f %name.lang
 %defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog DEPENDS NEWS README THANKS TODO
+%doc AUTHORS COPYING ChangeLog NEWS README THANKS
 %{_sysconfdir}/gconf/schemas/gtranslator.schemas
 %{_bindir}/gtranslator
 %{_datadir}/gtranslator
