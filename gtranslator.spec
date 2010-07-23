@@ -22,6 +22,7 @@ BuildRequires:	subversion-devel
 BuildRequires:	libsoup-2.4-devel
 BuildRequires:	libgdict1.0-devel
 BuildRequires:	gucharmap-devel
+BuildRequires:	gda4.0-devel
 Requires:	gettext
 
 Requires(post): desktop-file-utils scrollkeeper
