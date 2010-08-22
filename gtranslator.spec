@@ -3,10 +3,10 @@
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
 Version:	%{version}
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Editors
-URL:		http://sourceforge.net/projects/gtranslator/
+URL:		http://projects.gnome.org/gtranslator
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtranslator/%{name}-%{version}.tar.bz2
 BuildRequires:  imagemagick
