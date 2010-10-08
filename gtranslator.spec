@@ -24,6 +24,9 @@ BuildRequires:	libgdict1.0-devel
 BuildRequires:	gucharmap-devel
 BuildRequires:	gda4.0-devel
 BuildRequires:	glib2-devel >= 2.26
+BuildRequires:	gsettings-desktop-schemas-devel
+#gw TODO: is this needed?
+Requires:	gsettings-desktop-schemas
 Requires:	gettext
 
 Requires(post): desktop-file-utils scrollkeeper
