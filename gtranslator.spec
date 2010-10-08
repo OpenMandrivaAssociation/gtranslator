@@ -1,9 +1,9 @@
-%define version 1.9.11
+%define version 1.9.12
 
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
 Version:	%{version}
-Release:	%mkrel 2
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Editors
 URL:		http://projects.gnome.org/gtranslator
@@ -23,6 +23,7 @@ BuildRequires:	libsoup-2.4-devel
 BuildRequires:	libgdict1.0-devel
 BuildRequires:	gucharmap-devel
 BuildRequires:	gda4.0-devel
+BuildRequires:	glib2-devel >= 2.26
 Requires:	gettext
 
 Requires(post): desktop-file-utils scrollkeeper
@@ -46,7 +47,7 @@ This package contains development files needed to build %name plugins.
 
 %build
 %configure2_5x \
-	--disable-scrollkeeper --disable-schemas-install \
+	--disable-scrollkeeper \
 	--enable-compile-warnings=maximum \
 	--enable-debug=no --disable-static
 
@@ -64,25 +65,9 @@ rm -f %buildroot%_libdir/gtranslator/*.la
 %clean
 rm -fr $RPM_BUILD_ROOT
 
-%if %mdkversion < 200900
-%post 
-%update_scrollkeeper
-%{update_menus}
-%endif
-
-%if %mdkversion < 200900
-%postun 
-%update_scrollkeeper
-%{clean_menus}
-%endif
-
-%preun
-%preun_uninstall_gconf_schemas %name
-
 %files -f %name.lang
 %defattr(-, root, root)
 %doc AUTHORS COPYING ChangeLog NEWS README THANKS
-%{_sysconfdir}/gconf/schemas/gtranslator.schemas
 %{_bindir}/gtranslator
 %{_datadir}/gtranslator
 %{_libdir}/gtranslator
@@ -92,6 +77,7 @@ rm -fr $RPM_BUILD_ROOT
 %_datadir/icons/hicolor/*/apps/gtranslator.*
 %{_datadir}/pixmaps/*
 %{_datadir}/gtk-doc/html/gtranslator
+%_datadir/glib-2.0/schemas/org.gnome.gtranslator*.gschema.xml
 
 %files devel
 %defattr(-, root, root)
