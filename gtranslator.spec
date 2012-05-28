@@ -1,4 +1,4 @@
-%define version 1.9.13
+%define version 2.91.4
 
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
@@ -7,8 +7,7 @@ Release:	%mkrel 1
 License:	GPLv2+
 Group:		Editors
 URL:		http://projects.gnome.org/gtranslator
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtranslator/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtranslator/2.91/gtranslator-%{version}.tar.xz
 BuildRequires:  imagemagick
 BuildRequires:	gnome-doc-utils
 BuildRequires:	intltool
@@ -17,9 +16,9 @@ BuildRequires:	scrollkeeper
 BuildRequires:	gtkspell-devel
 BuildRequires:	unique-devel
 BuildRequires:	libgtksourceview-2.0-devel
-BuildRequires:	libgdl-devel >= 2.27.2-2mdv
+BuildRequires:	pkgconfig(gdl-1.0)
 BuildRequires:	subversion-devel
-BuildRequires:	libsoup-2.4-devel
+BuildRequires:	libsoup-devel
 BuildRequires:	libgdict1.0-devel
 BuildRequires:	gucharmap-devel
 BuildRequires:	gda4.0-devel
@@ -57,7 +56,6 @@ This package contains development files needed to build %name plugins.
 %make
 
 %install
-rm -fr $RPM_BUILD_ROOT
 %makeinstall_std UPDATE_DESKTOP=true
 
 
@@ -65,11 +63,7 @@ rm -f %buildroot%_libdir/gtranslator/*.la
 
 %find_lang %name --with-gnome
 
-%clean
-rm -fr $RPM_BUILD_ROOT
-
 %files -f %name.lang
-%defattr(-, root, root)
 %doc AUTHORS COPYING ChangeLog NEWS README THANKS
 %{_bindir}/gtranslator
 %{_datadir}/gtranslator
@@ -83,6 +77,5 @@ rm -fr $RPM_BUILD_ROOT
 %_datadir/glib-2.0/schemas/org.gnome.gtranslator*.gschema.xml
 
 %files devel
-%defattr(-, root, root)
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/gtranslator-2.0
