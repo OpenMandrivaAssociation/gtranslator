@@ -1,35 +1,37 @@
-%define version 2.91.4
-
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
-Version:	%{version}
-Release:	%mkrel 1
+Version:	45.3
+Release:	1
 License:	GPLv2+
 Group:		Editors
-URL:		http://projects.gnome.org/gtranslator
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtranslator/2.91/gtranslator-%{version}.tar.xz
-BuildRequires:  imagemagick
-BuildRequires:	gnome-doc-utils
-BuildRequires:	intltool
-BuildRequires:	libgnomeui2-devel
-BuildRequires:	scrollkeeper
-BuildRequires:	gtkspell-devel
-BuildRequires:	unique-devel
-BuildRequires:	libgtksourceview-2.0-devel
-BuildRequires:	pkgconfig(gdl-1.0)
-BuildRequires:	subversion-devel
-BuildRequires:	libsoup-devel
-BuildRequires:	libgdict1.0-devel
-BuildRequires:	gucharmap-devel
-BuildRequires:	gda4.0-devel
-BuildRequires:	glib2-devel >= 2.26
-BuildRequires:	gsettings-desktop-schemas-devel
-#gw TODO: is this needed?
-Requires:	gsettings-desktop-schemas
-Requires:	gettext
+URL:		https://projects.gnome.org/gtranslator
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/gtranslator/45/gtranslator-%{version}.tar.xz
 
-Requires(post): desktop-file-utils scrollkeeper
-Requires(postun): desktop-file-utils scrollkeeper
+BuildRequires:	pkgconfig(gio-2.0)
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
+BuildRequires:	pkgconfig(gsettings-desktop-schemas)
+BuildRequires:	pkgconfig(gthread-2.0)
+BuildRequires:	pkgconfig(gtk4)
+BuildRequires:	pkgconfig(gtksourceview-5)
+BuildRequires:	pkgconfig(gspell-1)
+BuildRequires:	pkgconfig(iso-codes)
+BuildRequires:	pkgconfig(json-glib-1.0)
+BuildRequires:	pkgconfig(libgda-6.0)
+BuildRequires:	pkgconfig(libadwaita-1)
+BuildRequires:	pkgconfig(libsoup-3.0)
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	itstool
+BuildRequires:	yelp-tools
+#BuildRequires:	gtk-doc
+BuildRequires:	gnome-common
+BuildRequires:	gettext
+BuildRequires:	meson
+BuildRequires:	gettext-devel
+Requires:	gettext
+Requires:	iso-codes
+Requires:	python3dist(pygobject)
+Requires:	python-gobject3
 
 %description
 gtranslator is a comfortable po file editor with many bells and whistles.
@@ -45,37 +47,33 @@ Summary:	Development files for %name
 This package contains development files needed to build %name plugins.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure2_5x \
-	--disable-scrollkeeper \
-	--enable-compile-warnings=maximum \
-	--enable-debug=no --disable-static
-
-%make
+%meson 	\
+	-Dgtk_doc=false
+%meson_build
 
 %install
-%makeinstall_std UPDATE_DESKTOP=true
-
+%meson_install
 
 rm -f %buildroot%_libdir/gtranslator/*.la
 
-%find_lang %name --with-gnome
+%find_lang %{name} --with-gnome
 
-%files -f %name.lang
-%doc AUTHORS COPYING ChangeLog NEWS README THANKS
+%files -f %{name}.lang
+%license COPYING
+%doc AUTHORS NEWS README.md THANKS
 %{_bindir}/gtranslator
-%{_datadir}/gtranslator
-%{_libdir}/gtranslator
-%{_datadir}/omf/%name
-%{_mandir}/man?/*
+%{_datadir}/gtksourceview-5/language-specs/gtranslator.lang
+%{_datadir}/gtranslator/
 %{_datadir}/applications/*.desktop
-%_datadir/icons/hicolor/*/apps/gtranslator.*
-%{_datadir}/pixmaps/*
-%{_datadir}/gtk-doc/html/gtranslator
-%_datadir/glib-2.0/schemas/org.gnome.gtranslator*.gschema.xml
+%{_metainfodir}/org.gnome.Gtranslator.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/org.gnome.Gtranslator*.svg
+%{_datadir}/glib-2.0/schemas/org.gnome.gtranslator*.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.Gtranslator.gschema.xml
+%{_mandir}/man?/*
 
 %files devel
-%{_libdir}/pkgconfig/*.pc
-%{_includedir}/gtranslator-2.0
+#{_libdir}/pkgconfig/*.pc
+#{_includedir}/gtranslator-2.0
