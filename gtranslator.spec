@@ -75,5 +75,4 @@ rm -f %buildroot%_libdir/gtranslator/*.la
 %{_mandir}/man?/*
 
 %files devel
-#{_libdir}/pkgconfig/*.pc
-#{_includedir}/gtranslator-2.0
+%{_includedir}/gtr-marshal.h
