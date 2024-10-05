@@ -50,8 +50,7 @@ This package contains development files needed to build %name plugins.
 %autosetup -p1
 
 %build
-%meson 	\
-	-Dgtk_doc=false
+%meson
 %meson_build
 
 %install
