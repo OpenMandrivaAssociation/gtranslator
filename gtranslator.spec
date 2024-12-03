@@ -1,6 +1,6 @@
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
-Version:	47.0
+Version:	47.1
 Release:	1
 License:	GPLv2+
 Group:		Editors
