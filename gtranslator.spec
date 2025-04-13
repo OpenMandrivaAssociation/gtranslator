@@ -1,7 +1,7 @@
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
-Version:	47.1
-Release:	2
+Version:	48.0
+Release:	1
 License:	GPLv2+
 Group:		Editors
 URL:		https://projects.gnome.org/gtranslator
