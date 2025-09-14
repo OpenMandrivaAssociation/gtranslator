@@ -21,6 +21,7 @@ BuildRequires:	pkgconfig(libgda-6.0)
 BuildRequires:	pkgconfig(libadwaita-1)
 BuildRequires:	pkgconfig(libsoup-3.0)
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:  desktop-file-utils
 BuildRequires:	itstool
 BuildRequires:	yelp-tools
 #BuildRequires:	gtk-doc
