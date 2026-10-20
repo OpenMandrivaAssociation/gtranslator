@@ -62,7 +62,6 @@ rm -f %buildroot%_libdir/gtranslator/*.la
 %{_datadir}/applications/*.desktop
 %{_metainfodir}/org.gnome.Gtranslator.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Gtranslator*.svg
-%{_datadir}/glib-2.0/schemas/org.gnome.gtranslator*.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.Gtranslator.gschema.xml
 %{_datadir}/dbus-1/services/org.gnome.Gtranslator.service
 %{_mandir}/man?/*
