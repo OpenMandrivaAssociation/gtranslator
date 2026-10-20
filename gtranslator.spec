@@ -1,6 +1,6 @@
 Summary:	Translation (.po) file editor with many features
 Name:		gtranslator
-Version:	50.0
+Version:	51.0
 Release:	1
 License:	GPLv2+
 Group:		Editors
@@ -39,14 +39,6 @@ gtranslator is a comfortable po file editor with many bells and whistles.
 It features many useful function which ease the work of translators of po
 files immenantly.
 
-%package	devel
-Group:		Development/GNOME and GTK+
-Requires:	%name = %version
-Summary:	Development files for %name
-
-%description	devel
-This package contains development files needed to build %name plugins.
-
 %prep
 %autosetup -p1
 
@@ -68,12 +60,9 @@ rm -f %buildroot%_libdir/gtranslator/*.la
 %{_datadir}/gtksourceview-5/language-specs/gtranslator.lang
 %{_datadir}/gtranslator/
 %{_datadir}/applications/*.desktop
-%{_metainfodir}/org.gnome.Gtranslator.appdata.xml
+%{_metainfodir}/org.gnome.Gtranslator.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Gtranslator*.svg
 %{_datadir}/glib-2.0/schemas/org.gnome.gtranslator*.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.Gtranslator.gschema.xml
 %{_datadir}/dbus-1/services/org.gnome.Gtranslator.service
 %{_mandir}/man?/*
-
-%files devel
-#{_includedir}/gtr-marshal.h
